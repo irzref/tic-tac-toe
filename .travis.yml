@@ -1,6 +1,15 @@
 language: node_js
 
+dist: trusty
+
 node_js:
   - "6"
 
-script: npm run build
+addons:
+  sonarcloud:
+    organization: "irzref-github" # the key of the org you chose at step #3
+
+script:
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner
+  - npm run build
