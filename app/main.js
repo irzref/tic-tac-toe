@@ -9,7 +9,7 @@ const numOfSquares = 9;
 
 const startStepNumber = 0;
 
-const state = {
+const state = Object.freeze({
     history: [
         {
         squares: Array(numOfSquares).fill(null)
@@ -17,7 +17,7 @@ const state = {
     ],
     stepNumber: startStepNumber,
     xIsNext: true
-};
+});
 
 const handleClick = (props, i) => {
     const history = props.state.history.slice(0, props.state.stepNumber + 1);
