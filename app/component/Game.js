@@ -1,18 +1,22 @@
 import React from 'react';
-import styles from './Style.css';
-import Board from './Board.js';
-import {calculateWinner} from './Helper.js';
+import {Board} from './Board.js';
+import styles from '../Style.css';
+import {calculateWinner} from '../Helper.js';
 
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
+    
+    const numOfSquares = 9; 
+    const startStepNumber = 0;
+
     this.state = {
       history: [
         {
-          squares: Array(9).fill(null)
+          squares: Array(numOfSquares).fill(null)
         }
       ],
-      stepNumber: 0,
+      stepNumber: startStepNumber,
       xIsNext: true
     };
   }
@@ -25,7 +29,7 @@ export default class Game extends React.Component {
       return;
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
-    this.setState({
+    this.setState((prevState, props) => ({
       history: history.concat([
         {
           squares: squares
@@ -33,14 +37,14 @@ export default class Game extends React.Component {
       ]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
-    });
+    }));
   }
 
   jumpTo(step) {
-    this.setState({
+    this.setState((prevState, props) => ({
       stepNumber: step,
       xIsNext: (step % 2) === 0
-    });
+    }));
   }
 
   render() {
