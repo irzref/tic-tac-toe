@@ -2,7 +2,7 @@ import React from 'react';
 import {Square} from './Square.js';
 import styles from '../Style.css';
 
-export let Board = (props) => {
+export const Board = (props) => {
   const renderSquare = (i) => {
     return (
       <Square
@@ -16,9 +16,13 @@ export let Board = (props) => {
   const numOfSquaresInRow = 3;
   const numOfRow = 3;
 
-  const rows = Array(numOfRow).fill(null).map((row, indexOfRow) => {
+  const SquaresInRow = Array(3).fill(null);
+  const Row = Array(3).fill(null);
+
+  //use ramda compose
+  const rows = Row.map((row, indexOfRow) => {
     
-    const squares = Array(numOfSquaresInRow).fill(null).map((square, indexOfSquare) => {
+    const squares = SquaresInRow.map((square, indexOfSquare) => {
       const i = indexOfSquare + indexOfRow * numOfSquaresInRow;
       return (renderSquare(i))
     })
