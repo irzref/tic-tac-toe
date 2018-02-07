@@ -16,8 +16,8 @@ export const Board = (props) => {
   const numOfSquaresInRow = 3;
   const numOfRow = 3;
 
-  const SquaresInRow = Array(3).fill(null);
-  const Row = Array(3).fill(null);
+  const SquaresInRow = Array(numOfSquaresInRow).fill(null);
+  const Row = Array(numOfRow).fill(null);
 
   //use ramda compose
   const rows = Row.map((row, indexOfRow) => {
