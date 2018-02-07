@@ -31,7 +31,7 @@ const handleClick = (props, i) => {
     
     squares[i] = xIsNext ? "X" : "O";
     
-    const state = {
+    const state = Object.freeze({
       history: history.concat([
         {
           squares: squares
@@ -39,7 +39,7 @@ const handleClick = (props, i) => {
       ]),
       stepNumber: history.length,
       xIsNext: !props.state.xIsNext
-    };
+    });
 
     const handleClick = props.handleClick; 
     const jumpTo = props.jumpTo;
